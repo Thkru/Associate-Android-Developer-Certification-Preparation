@@ -9,12 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.thkrue.cert.util.InputValidator;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText etEmail, etPwd;
+    private TextView tvInfo;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void doLogin() {
         ((ImageView) findViewById(R.id.iv_header)).setImageResource(R.drawable.android);
+        tvInfo = findViewById(R.id.tv_info);
+        tvInfo.setText("Logged in!");
+        tvInfo.setVisibility(View.VISIBLE);
     }
 
     private void initFab() {
