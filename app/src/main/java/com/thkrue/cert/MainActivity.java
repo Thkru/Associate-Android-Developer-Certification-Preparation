@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.thkrue.cert.util.InputValidator;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final String TAG = "MainActivity";
     private EditText etEmail, etPwd;
     private TextView tvInfo;
 
@@ -43,9 +45,11 @@ public class MainActivity extends AppCompatActivity {
                     if (validator.isValidPassword(etPwd.getText().toString())) {
                         doLogin();
                     } else {
+                        Log.i(TAG, "Wrong password");
                         //TODO highlight pwd
                     }
                 } else {
+                    Log.i(TAG, "Wrong email");
                     //TODO highlight email
                 }
             }
