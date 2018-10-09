@@ -10,22 +10,31 @@
     tools:showIn="@layout/activity_main">
 
     <ImageView
+        android:id="@+id/iv_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
         android:src="@mipmap/ic_launcher" />
 
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E-Mail" />
+        android:layout_marginBottom="12dp"
+        android:hint="E-Mail"
+        android:inputType="textEmailAddress"
+        android:text="android@thkru.com" />
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:text="android" />
 
     <Button
         android:id="@+id/btn_login"

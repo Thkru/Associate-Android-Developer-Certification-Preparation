@@ -7,8 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.thkrue.cert.util.InputValidator;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText etEmail, etPwd;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -16,12 +22,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
+        initInputFields();
+        initLoginButton();
+        initFab();
+    }
+
+    private void initInputFields() {
+        etEmail = findViewById(R.id.et_email);
+        etPwd = findViewById(R.id.et_password);
+    }
+
+    private void initLoginButton() {
+        findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InputValidator validator = new InputValidator();
+                if (validator.isValidEmail(etEmail.getText().toString())) {
+                    if (validator.isValidPassword(etPwd.getText().toString())) {
+                        doLogin();
+                    } else {
+                        //TODO highlight pwd
+                    }
+                } else {
+                    //TODO highlight email
+                }
+            }
+        });
+    }
+
+    private void doLogin() {
+        ((ImageView) findViewById(R.id.iv_header)).setImageResource(R.drawable.android);
+    }
+
+    private void initFab() {
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
-
 
         });
     }
