@@ -41,9 +41,9 @@
 
     <EditText
         android:id="@+id/et_email"
+        style="@style/default_margin_top"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
         android:text="android@thkru.com"
@@ -53,9 +53,9 @@
 
     <EditText
         android:id="@+id/et_password"
+        style="@style/default_margin_top"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:text="android"
@@ -65,9 +65,9 @@
 
     <com.thkrue.cert.ui.LoginButton
         android:id="@+id/btn_login"
+        style="@style/default_margin_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@id/et_password"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
