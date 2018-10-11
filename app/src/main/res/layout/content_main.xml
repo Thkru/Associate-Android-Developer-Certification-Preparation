@@ -44,32 +44,47 @@
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/et_email"
-        style="@style/default_margin_top"
-        android:layout_width="200dp"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_email"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="EMail Input"
-        android:hint="E-Mail"
-        android:inputType="textEmailAddress"
-        android:nextFocusUp="@id/iv_header"
-        android:text="android@thkru.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_header" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_header">
 
-    <EditText
-        android:id="@+id/et_password"
-        style="@style/default_margin_top"
-        android:layout_width="200dp"
+        <EditText
+            android:id="@+id/et_email"
+            style="@style/default_margin_top"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="EMail Input"
+            android:hint="E-Mail"
+            android:inputType="textEmailAddress"
+            android:nextFocusUp="@id/iv_header"
+            android:text="android@thkru.com" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_password"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="Password Input"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:text="android"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toBottomOf="@+id/til_email">
+
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/default_margin_top"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="Password Input"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:text="android" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <com.thkrue.cert.ui.LoginButton
         android:id="@+id/btn_login"
@@ -77,8 +92,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="Login Button"
-        app:layout_constraintStart_toStartOf="@id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintStart_toStartOf="@id/til_password"
+        app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
     <TextView
         android:id="@+id/tv_info"
@@ -86,7 +101,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="Addition Information Field"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@id/et_password"
+        app:layout_constraintEnd_toEndOf="@id/til_password"
         app:layout_constraintTop_toTopOf="@id/btn_login"
         tools:text="Test"
         tools:visibility="visible" />

@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
                         doLogin();
                     } else {
                         Log.i(TAG, "Wrong password");
-                        //TODO highlight pwd
+                        etPwd.setError("Error");
                     }
                 } else {
                     Log.i(TAG, "Wrong email");
-                    //TODO highlight email
+                    etEmail.setError("Error");
                 }
             }
         });
