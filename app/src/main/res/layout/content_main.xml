@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:maxHeight="100dp"
+        android:maxWidth="100dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toStartOf="@+id/iv_left_icon"
         app:layout_constraintHorizontal_bias="0.5"
@@ -45,10 +46,10 @@
         android:layout_marginTop="20dp"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
+        android:text="android@thkru.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_header"
-        tools:text="android@thkru.com" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_header" />
 
     <EditText
         android:id="@+id/et_password"
@@ -57,10 +58,10 @@
         android:layout_marginTop="20dp"
         android:hint="Password"
         android:inputType="textPassword"
+        android:text="android"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email"
-        tools:text="android" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <Button
         android:id="@+id/btn_login"
