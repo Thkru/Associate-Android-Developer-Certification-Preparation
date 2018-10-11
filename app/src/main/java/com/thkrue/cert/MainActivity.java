@@ -8,10 +8,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.thkrue.cert.util.InputValidator;
 
@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private void initInputFields() {
         etEmail = findViewById(R.id.et_email);
         etPwd = findViewById(R.id.et_password);
+    }
+
+    public void toasty(View v) {
+        Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
     }
 
     private void initLoginButton() {
