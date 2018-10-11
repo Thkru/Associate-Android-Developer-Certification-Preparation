@@ -1,5 +1,7 @@
 ## Android Developer Certification Preparation
 
+This project got created in the purpose to learn for the Associate Android Developer Certification.
+All information provided are based on public materials from Google, including the ToC below.
 
 ### Exam Content 
 
