@@ -6,7 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.amitshekhar.DebugDB;
 import com.thkrue.cert.room.MyEntity;
 import com.thkrue.cert.room.MyEntityViewModel;
 
@@ -25,6 +27,8 @@ public class DataListActivity extends AppCompatActivity {
         final MyListAdapter adapter = new MyListAdapter();
         recycler.setAdapter(adapter);
         setupViewModel(adapter);
+
+        Log.e("", ">>>>> " + DebugDB.getAddressLog());
     }
 
     private void setupViewModel(final MyListAdapter adapter) {
