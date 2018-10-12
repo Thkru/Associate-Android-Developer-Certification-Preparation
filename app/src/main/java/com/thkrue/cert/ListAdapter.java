@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.thkrue.cert.room.MyEntity;
+
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
-    private final List<String> data;
+    private final MyEntity[] data;
 
-    public ListAdapter(List<String> list) {
+    public ListAdapter(MyEntity[] list) {
         data = list;
     }
 
@@ -26,12 +28,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int pos) {
-        holder.bindData(data.get(pos));
+        holder.bindData(data[pos].toString());
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return data.length;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

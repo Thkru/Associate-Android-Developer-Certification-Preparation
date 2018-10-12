@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.thkrue.cert.room.MyEntity;
+import com.thkrue.cert.room.RoomUtil;
 
 public class DataListActivity extends AppCompatActivity {
 
@@ -19,10 +19,24 @@ public class DataListActivity extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setHasFixedSize(true);
 
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            list.add("Entry: " + i);
-        }
-        recycler.setAdapter(new ListAdapter(list));
+        doWork(recycler);
+    }
+
+    public void doWork(final RecyclerView recyclerView) {
+
+        new Thread() {
+            @Override
+            public void run() {
+
+                final MyEntity[] data = RoomUtil.getInstance(DataListActivity.this).getEntities();
+
+                recyclerView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView.setAdapter(new ListAdapter(data));
+                    }
+                });
+            }
+        }.start();
     }
 }
