@@ -1,5 +1,6 @@
 package com.thkrue.cert;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -72,9 +73,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                MainActivity.this.startActivity(new Intent(MainActivity.this, DataListActivity.class));
             }
-
         });
     }
 
