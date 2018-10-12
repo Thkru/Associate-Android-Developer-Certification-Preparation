@@ -9,15 +9,12 @@ import android.widget.TextView;
 
 import com.thkrue.cert.room.MyEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
+public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.MyViewHolder> {
 
-    private final MyEntity[] data;
-
-    public ListAdapter(MyEntity[] list) {
-        data = list;
-    }
+    private List<MyEntity> data = new ArrayList<>();
 
     @NonNull
     @Override
@@ -28,12 +25,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int pos) {
-        holder.bindData(data[pos].toString());
+        holder.bindData(data.get(pos).toString());
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return data.size();
+    }
+
+    public void setData(List<MyEntity> data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
