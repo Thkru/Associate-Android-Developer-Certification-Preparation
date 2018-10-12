@@ -13,25 +13,17 @@ public class MyEntity {
     @NonNull
     private String character;
 
-    @ColumnInfo(name = "alphabetindex")
-    private int alphabetindex;
 
-
-    public MyEntity(String character, int alphabetindex) {
+    public MyEntity(String character) {
         this.character = character;
-        this.alphabetindex = alphabetindex;
     }
 
     public String getCharacter() {
         return character;
     }
 
-    public int getAlphabetindex() {
-        return alphabetindex;
-    }
-
     @Override
     public String toString() {
-        return character + " at " + alphabetindex;
+        return character;
     }
 }

@@ -7,20 +7,24 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.View;
 
-import com.amitshekhar.DebugDB;
 import com.thkrue.cert.room.MyEntity;
 import com.thkrue.cert.room.MyEntityViewModel;
 
 import java.util.List;
+import java.util.UUID;
 
 public class DataListActivity extends AppCompatActivity {
+
+    private MyEntityViewModel myEntityVM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_list);
+
+        myEntityVM = ViewModelProviders.of(this).get(MyEntityViewModel.class);
 
         RecyclerView recycler = findViewById(R.id.rv_list);
         recycler.setLayoutManager(new LinearLayoutManager(this));
@@ -28,12 +32,19 @@ public class DataListActivity extends AppCompatActivity {
         final MyListAdapter adapter = new MyListAdapter();
         recycler.setAdapter(adapter);
         setupViewModel(adapter);
+        initFab();
+    }
 
-        Log.e("", ">>>>> " + DebugDB.getAddressLog());
+    private void initFab() {
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myEntityVM.insert(new MyEntity(UUID.randomUUID().toString().substring(0, 8)));
+            }
+        });
     }
 
     private void setupViewModel(final MyListAdapter adapter) {
-        MyEntityViewModel myEntityVM = ViewModelProviders.of(this).get(MyEntityViewModel.class);
         myEntityVM.getAllEntities().observe(this, new Observer<List<MyEntity>>() {
             @Override
             public void onChanged(@Nullable final List<MyEntity> entities) {
@@ -41,22 +52,4 @@ public class DataListActivity extends AppCompatActivity {
             }
         });
     }
-
-//    public void doWork(final RecyclerView recyclerView) {
-//
-//        new Thread() {
-//            @Override
-//            public void run() {
-//
-//                final MyEntity[] data = MyEntityRepository.getInstance(DataListActivity.this).getEntities();
-//
-//                recyclerView.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        recyclerView.setAdapter(new MyListAdapter(data));
-//                    }
-//                });
-//            }
-//        }.start();
-//    }
 }

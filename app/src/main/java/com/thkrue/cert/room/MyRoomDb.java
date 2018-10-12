@@ -17,7 +17,7 @@ public abstract class MyRoomDb extends RoomDatabase {
             synchronized (MyRoomDb.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            MyRoomDb.class, "Sample.db")//TODO fill database again
+                            MyRoomDb.class, "Entity.db")
                             .fallbackToDestructiveMigration()
                             .build();
                 }
@@ -25,12 +25,4 @@ public abstract class MyRoomDb extends RoomDatabase {
         }
         return INSTANCE;
     }
-
-//    private static void fillDb() {
-//        int i = 0;
-//        for (char alphabet = 'A'; alphabet <= 'Z'; alphabet++) {
-//            i++;
-//            db.entityDao().insert(new MyEntity(String.valueOf(alphabet), i));
-//        }
-//    }
 }

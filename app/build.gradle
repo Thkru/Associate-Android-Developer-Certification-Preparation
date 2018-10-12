@@ -39,5 +39,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.amitshekhar.android:debug-db:1.0.4'
+    //implementation 'com.amitshekhar.android:debug-db:1.0.4'
 }
