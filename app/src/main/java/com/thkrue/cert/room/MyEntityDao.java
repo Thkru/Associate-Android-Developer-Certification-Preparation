@@ -1,10 +1,8 @@
 package com.thkrue.cert.room;
 
-import android.arch.lifecycle.LiveData;
+import android.arch.paging.DataSource;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
-
-import java.util.List;
 
 @android.arch.persistence.room.Dao
 public interface MyEntityDao {
@@ -19,6 +17,7 @@ public interface MyEntityDao {
 //    MyEntity[] getEntities(int alphabetindex, int limit);
 
     @Query("SELECT * FROM alphabet")
-    LiveData<List<MyEntity>> getEntities();
+    DataSource.Factory<Integer, MyEntity> getEntities();
+//    LiveData<PagedList<MyEntity>> getEntities();
 
 }

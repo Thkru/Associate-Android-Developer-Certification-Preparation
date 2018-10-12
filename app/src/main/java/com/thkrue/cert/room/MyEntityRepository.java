@@ -1,22 +1,22 @@
 package com.thkrue.cert.room;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.paging.LivePagedListBuilder;
+import android.arch.paging.PagedList;
 import android.content.Context;
 import android.os.AsyncTask;
-
-import java.util.List;
 
 public class MyEntityRepository {
 
     private MyEntityDao mDao;
-    private LiveData<List<MyEntity>> mLiveData;
+    private LiveData<PagedList<MyEntity>> mLiveData;
 
     public MyEntityRepository(Context c) {
         mDao = MyRoomDb.getDatabase(c).entityDao();
-        mLiveData = mDao.getEntities();
+        mLiveData = new LivePagedListBuilder<>(mDao.getEntities(), 5).build();
     }
 
-    public LiveData<List<MyEntity>> getData() {
+    public LiveData<PagedList<MyEntity>> getData() {
         return mLiveData;
     }
 
