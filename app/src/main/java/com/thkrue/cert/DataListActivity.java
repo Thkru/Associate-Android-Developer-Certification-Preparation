@@ -1,6 +1,7 @@
 package com.thkrue.cert;
 
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,7 @@ public class DataListActivity extends AppCompatActivity {
     }
 
     private void setupViewModel(final MyListAdapter adapter) {
-        MyEntityViewModel myEntityVM = new MyEntityViewModel(this.getApplicationContext());
+        MyEntityViewModel myEntityVM = ViewModelProviders.of(this).get(MyEntityViewModel.class);
         myEntityVM.getAllEntities().observe(this, new Observer<List<MyEntity>>() {
             @Override
             public void onChanged(@Nullable final List<MyEntity> entities) {
