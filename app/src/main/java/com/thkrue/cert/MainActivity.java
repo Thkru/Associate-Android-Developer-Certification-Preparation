@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.thkrue.cert.ui.NotificationUtil;
 import com.thkrue.cert.util.InputValidator;
 
 import java.io.IOException;
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, DataListActivity.class));
+                new NotificationUtil().showNotification(MainActivity.this, "Title", "Message", R.drawable.ic_android);
             }
         });
     }
