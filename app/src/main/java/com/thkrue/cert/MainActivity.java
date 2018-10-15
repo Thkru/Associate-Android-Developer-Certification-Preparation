@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -76,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
         tvInfo = findViewById(R.id.tv_info);
         tvInfo.setText("Logged in as " + getCurrentUserNameFromPrefs() + "!");
         tvInfo.setVisibility(View.VISIBLE);
+        showSnackbar();
+    }
+
+    private void showSnackbar() {
+        Snackbar.make(findViewById(R.id.cl_root), "Snacked it!", Snackbar.LENGTH_SHORT).setAction("Got it", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        }).show();
     }
 
     private void setImageFromAssets() {
