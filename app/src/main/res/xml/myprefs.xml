@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="text_user"
+        android:summary="Please provide your username"
+        android:title="Your Name" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="updates"
+        android:summary="You wanna have updates?"
+        android:title="Application Updates" />
+    <ListPreference
+        android:defaultValue="A"
+        android:entries="@array/prefsOptions"
+        android:entryValues="@array/prefsValues"
+        android:key="list_options"
+        android:summary="Select A, B or C."
+        android:title="Option Details" />
+</PreferenceScreen>
