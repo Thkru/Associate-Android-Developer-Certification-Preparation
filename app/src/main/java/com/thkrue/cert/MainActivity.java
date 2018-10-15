@@ -125,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
+            case R.id.action_navdrawer:
+                startActivity(new Intent(this, NavDrawerActivity.class));
+                return true;
             case R.id.action_start_service:
                 MyJobService.scheduleJob(getApplicationContext());
                 return true;
