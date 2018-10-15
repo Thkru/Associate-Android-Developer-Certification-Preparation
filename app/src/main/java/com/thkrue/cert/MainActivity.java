@@ -1,6 +1,8 @@
 package com.thkrue.cert;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.thkrue.cert.util.InputValidator;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,10 +67,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doLogin() {
-        ((ImageView) findViewById(R.id.iv_header)).setImageResource(R.drawable.android);
+
+        setImageFromAssets();
         tvInfo = findViewById(R.id.tv_info);
         tvInfo.setText("Logged in!");
         tvInfo.setVisibility(View.VISIBLE);
+    }
+
+    private void setImageFromAssets() {
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("android.png"));
+//        Bitmap bitmap = BitmapFactory.decodeStream(getResources().openRawResource(R.raw.android_raw));//Raw alternative
+            ((ImageView) findViewById(R.id.iv_header)).setImageBitmap(bitmap);
+            //Drawable drawable = Drawable.createFromStream(getAssets().open("android.png"), null);
+            //((ImageView) findViewById(R.id.iv_header)).setImageDrawable(drawable);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initFab() {
