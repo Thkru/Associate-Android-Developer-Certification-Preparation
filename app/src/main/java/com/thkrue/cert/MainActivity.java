@@ -90,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 return true;
+            case R.id.action_start_service:
+                MyJobService.scheduleJob(getApplicationContext());
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
