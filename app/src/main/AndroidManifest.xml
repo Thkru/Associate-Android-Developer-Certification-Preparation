@@ -26,6 +26,8 @@
             android:label="Word service"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
+        <activity android:name=".SettingsActivity" />
+
     </application>
 
 </manifest>

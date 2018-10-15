@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="key_username" translatable="false">username</string>
+    <string name="default_username" translatable="false">user</string>
+
+</resources>

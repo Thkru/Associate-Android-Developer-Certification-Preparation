@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -66,11 +67,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void doLogin() {
+    private String getCurrentUserNameFromPrefs() {
+        return PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.key_username), getString(R.string.default_username));
+    }
 
+    private void doLogin() {
         setImageFromAssets();
         tvInfo = findViewById(R.id.tv_info);
-        tvInfo.setText("Logged in!");
+        tvInfo.setText("Logged in as " + getCurrentUserNameFromPrefs() + "!");
         tvInfo.setVisibility(View.VISIBLE);
     }
 
@@ -106,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.action_start_service:
                 MyJobService.scheduleJob(getApplicationContext());
