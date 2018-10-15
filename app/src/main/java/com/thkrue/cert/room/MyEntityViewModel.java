@@ -9,16 +9,15 @@ import java.util.List;
 public class MyEntityViewModel extends AndroidViewModel {
 
     private MyEntityRepository mRepo;
-    private LiveData<List<MyEntity>> mAllEntities;
+//    private LiveData<List<MyEntity>> mAllEntities;
 
     public MyEntityViewModel(Application a) {
         super(a);
         mRepo = new MyEntityRepository(a.getApplicationContext());
-        mAllEntities = mRepo.getData();
     }
 
     public LiveData<List<MyEntity>> getAllEntities() {
-        return mAllEntities;
+        return mRepo.getData();
     }
 
     public void insert(MyEntity entity) {
