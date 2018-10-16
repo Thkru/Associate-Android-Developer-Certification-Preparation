@@ -8,12 +8,13 @@ import android.os.AsyncTask;
 
 public class MyEntityRepository {
 
+    public static final int PAGE_SIZE = 5;
     private MyEntityDao mDao;
     private LiveData<PagedList<MyEntity>> mLiveData;
 
     public MyEntityRepository(Context c) {
         mDao = MyRoomDb.getDatabase(c).entityDao();
-        mLiveData = new LivePagedListBuilder<>(mDao.getEntities(), 5).build();
+        mLiveData = new LivePagedListBuilder<>(mDao.getEntities(), PAGE_SIZE).build();
     }
 
     public LiveData<PagedList<MyEntity>> getData() {

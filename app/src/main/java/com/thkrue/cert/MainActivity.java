@@ -1,8 +1,12 @@
 package com.thkrue.cert;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,7 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.thkrue.cert.ui.NotificationUtil;
 import com.thkrue.cert.util.InputValidator;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,11 +69,37 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private String getCurrentUserNameFromPrefs() {
+        return PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.key_username), getString(R.string.default_username));
+    }
+
     private void doLogin() {
-        ((ImageView) findViewById(R.id.iv_header)).setImageResource(R.drawable.android);
+        setImageFromAssets();
         tvInfo = findViewById(R.id.tv_info);
-        tvInfo.setText("Logged in!");
+        tvInfo.setText("Logged in as " + getCurrentUserNameFromPrefs() + "!");
         tvInfo.setVisibility(View.VISIBLE);
+        showSnackbar();
+    }
+
+    private void showSnackbar() {
+        Snackbar.make(findViewById(R.id.cl_root), "Snacked it!", Snackbar.LENGTH_SHORT).setAction("Got it", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        }).show();
+    }
+
+    private void setImageFromAssets() {
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("android.png"));
+//        Bitmap bitmap = BitmapFactory.decodeStream(getResources().openRawResource(R.raw.android_raw));//Raw alternative
+            ((ImageView) findViewById(R.id.iv_header)).setImageBitmap(bitmap);
+            //Drawable drawable = Drawable.createFromStream(getAssets().open("android.png"), null);
+            //((ImageView) findViewById(R.id.iv_header)).setImageDrawable(drawable);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initFab() {
@@ -74,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, DataListActivity.class));
+                new NotificationUtil().showNotification(MainActivity.this, "Title", "Message", R.drawable.ic_android);
             }
         });
     }
@@ -89,6 +123,13 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            case R.id.action_navdrawer:
+                startActivity(new Intent(this, NavDrawerActivity.class));
+                return true;
+            case R.id.action_start_service:
+                MyJobService.scheduleJob(getApplicationContext());
                 return true;
         }
         return super.onOptionsItemSelected(item);
