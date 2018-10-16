@@ -13,8 +13,6 @@ import com.thkrue.cert.room.MyEntity;
 
 public class MyListAdapter extends PagedListAdapter<MyEntity, MyListAdapter.MyViewHolder> {
 
-//    private List<MyEntity> data = new ArrayList<>();
-
     protected MyListAdapter(@NonNull DiffUtil.ItemCallback<MyEntity> diffCallback) {
         super(diffCallback);
     }
@@ -28,19 +26,10 @@ public class MyListAdapter extends PagedListAdapter<MyEntity, MyListAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int pos) {
-//        holder.bindData(data.get(pos).toString());
-        holder.bindData(getItem(pos).toString());
+        MyEntity item = getItem(pos);
+        if (item != null)
+            holder.bindData(item.toString());
     }
-
-//    @Override
-//    public int getItemCount() {
-//        return data.size();
-//    }
-
-//    public void setData(List<MyEntity> data) {
-//        this.data = data;
-//        notifyDataSetChanged();
-//    }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
